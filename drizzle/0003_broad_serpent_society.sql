@@ -1,0 +1,2 @@
+ALTER TABLE `emailLogs` ADD `adminUserId` int;--> statement-breakpoint
+ALTER TABLE `emailLogs` ADD CONSTRAINT `emailLogs_adminUserId_users_id_fk` FOREIGN KEY (`adminUserId`) REFERENCES `users`(`id`) ON DELETE set null ON UPDATE no action;

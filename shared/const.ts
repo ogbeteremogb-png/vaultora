@@ -1,0 +1,14 @@
+export const COOKIE_NAME = "vaultora_session";
+export const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
+export const SESSION_TTL_MS = 1000 * 60 * 60 * 24 * 7;
+export const VERIFICATION_TTL_MS = 1000 * 60 * 20;
+export const RESET_TTL_MS = 1000 * 60 * 30;
+export const VERIFICATION_RESEND_COOLDOWN_MS = 1000 * 60;
+export const AXIOS_TIMEOUT_MS = 30_000;
+export const UNAUTHED_ERR_MSG = "Please login (10001)";
+export const NOT_ADMIN_ERR_MSG = "You do not have required permission (10002)";
+export const SUSPENDED_ERR_MSG = "This account is suspended";
+export const OAUTH_STATE_COOKIE = "__Host-oauth_state";
+export type OAuthState = { redirectUri: string; nonce?: string };
+export const encodeOAuthState = (state: OAuthState): string => btoa(JSON.stringify(state));
+export const decodeOAuthState = (state: string): OAuthState => { try { const parsed = JSON.parse(atob(state)); if (parsed && typeof parsed.redirectUri === "string") return parsed; } catch {} return { redirectUri: "" }; };
